@@ -54,3 +54,19 @@ Tester les balises suivantes dans la page app.component.html
  * `<app-dashboard></app-dashboard>`
  * `<app-table></app-table>`
 
+### Bonus
+
+- Générer un composant nommé Counter, et l'afficher dans l'application
+- Ajouter une variable "count" de type number dans le fichier typescript
+- Afficher cette variable dans le fichier HTML du composant
+- A l'aide de la fonction setInterval, incrémenter cette valeur toutes les secondes
+- Ajouter un bouton permettant de remettre à zero le compteur
+
+
+
+
+
+
+
+
+
