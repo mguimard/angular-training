@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pizza } from '../pizza';
 
 @Component({
     selector: 'app-pizzas',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class PizzasComponent {
 
-  pizzas = [
+  pizzas: Pizza[] = [
     {
       name: 'Reine',
       prix: 12
@@ -18,4 +19,10 @@ export class PizzasComponent {
       prix: 13
     }
   ]
+
+  show_pizzas = false;
+
+  togglePizzas() {
+    this.show_pizzas = !this.show_pizzas;
+  }
 }

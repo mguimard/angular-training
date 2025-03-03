@@ -1,5 +1,15 @@
 <p>pizzas works!</p>
 
-<p *ngFor="let pizza of pizzas">{{ pizza.name }}</p>
+<input type="text" placeholder="Nouvelle pizza" #new_pizza />
 
-        
+<p>Vous êtes en train de saisir: {{new_pizza.value}} </p>
+
+<button (click)="togglePizzas()">Toogle Pizzas</button>
+
+@if(show_pizzas){
+    @for(pizza of pizzas; track pizza.name) { 
+        <app-pizza [pizza_input]="pizza"></app-pizza>
+    } @empty {
+        <p>Aucune pizza dans la liste</p>
+    }    
+}
