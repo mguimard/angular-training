@@ -23,6 +23,11 @@
       <span>my-app</span>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <button (click)="show_counter = !show_counter">Show/hide counter</button>
+    @if(show_counter){
+      <app-counter></app-counter>
+    }
+
     <p>Hello my app</p>
     <app-pizzas></app-pizzas>
 

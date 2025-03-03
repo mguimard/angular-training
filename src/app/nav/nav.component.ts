@@ -12,7 +12,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 })
 export class NavComponent {
   private breakpointObserver = inject(BreakpointObserver);
-
+  show_counter = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

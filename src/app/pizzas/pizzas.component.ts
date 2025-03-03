@@ -21,8 +21,23 @@ export class PizzasComponent {
   ]
 
   show_pizzas = false;
+  count = 0
+  last_clicked = ''
 
   togglePizzas() {
     this.show_pizzas = !this.show_pizzas;
+  }
+
+  handlePizzaEvent(event: Pizza){
+    this.last_clicked = event.name;
+    console.log(event)
+    this.count++
+  }
+
+  removePizza(pizza:Pizza){
+    let index = this.pizzas.indexOf(pizza)
+    if(index >= 0){
+      this.pizzas.splice(index, 1)
+    }
   }
 }

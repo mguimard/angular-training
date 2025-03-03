@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaComponent } from './pizza/pizza.component';
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PizzaComponent } from './pizza/pizza.component';
     AnimalComponent,
     NavComponent,
     PizzasComponent,
-    PizzaComponent
+    PizzaComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,

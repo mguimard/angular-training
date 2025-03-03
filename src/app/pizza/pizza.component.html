@@ -1,1 +1,5 @@
-<p>pizza works! {{ pizza_input | json }}</p>
+<p>
+    pizza works! {{ pizza_input | json }} 
+    <button (click)="pizzaClicked.emit(pizza_input)">Emit event</button>
+    <button (click)="removeRequested.emit()">Remove</button>
+</p>
