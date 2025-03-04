@@ -1,5 +1,11 @@
 <p>pizzas works!</p>
 
+
+<app-show></app-show>
+<app-show str="hello world"></app-show>
+<app-show [str]="'hello world'"></app-show>
+<app-show [str]="last_clicked"></app-show>
+
 <input type="text" placeholder="Nouvelle pizza" #new_pizza />
 
 <p>Vous êtes en train de saisir: {{new_pizza.value}} </p>
@@ -12,6 +18,7 @@
     @for(pizza of pizzas; track pizza.name) { 
 
         <app-pizza 
+            appUserLog="pizza"
             [other_input_name]="pizza"
             (pizzaClicked)="handlePizzaEvent($event)"
             (removeRequested)="removePizza(pizza)"

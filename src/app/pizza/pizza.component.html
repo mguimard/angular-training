@@ -1,5 +1,12 @@
 <p>
     pizza works! {{ pizza_input | json }} 
-    <button (click)="pizzaClicked.emit(pizza_input)">Emit event</button>
-    <button (click)="removeRequested.emit()">Remove</button>
+    <button 
+        (click)="pizzaClicked.emit(pizza_input)" 
+        appUserLog="Bouton_Pizza"
+        >Emit event</button>
+    <button 
+        (click)="removeRequested.emit()" 
+        appUserLog="Bouton_Remove">
+        Remove
+    </button>
 </p>

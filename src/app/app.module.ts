@@ -14,6 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaComponent } from './pizza/pizza.component';
 import { CounterComponent } from './counter/counter.component';
+import { ShowComponent } from './show/show.component';
+import { UserLogDirective } from './user-log.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CounterComponent } from './counter/counter.component';
     NavComponent,
     PizzasComponent,
     PizzaComponent,
-    CounterComponent
+    CounterComponent,
+    ShowComponent,
+    UserLogDirective
   ],
   imports: [
     BrowserModule,
