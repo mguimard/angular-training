@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatButtonModule} from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VoitureComponent } from './voiture/voiture.component';
@@ -18,17 +18,21 @@ import { ShowComponent } from './show/show.component';
 import { UserLogDirective } from './user-log.directive';
 import { CherOuPasCherPipe } from './cher-ou-pas-cher.pipe';
 import { PizzasService } from './pizzas.service';
-import { TodoListComponent } from "./todo-list/todo-list.component";
+import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodosService } from './todos.service';
 import { CompletedCountPipe } from './completed-count.pipe';
 import { SortTodosPipe } from './sort-todos.pipe';
-import { ZooComponent } from "./zoo/zoo.component";
+import { ZooComponent } from './zoo/zoo.component';
 import { AnimalStringComponent } from './animal-string/animal-string.component';
 import { PizzaFormComponent } from './pizza-form/pizza-form.component';
 import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
     AnimalStringComponent,
     PizzaFormComponent,
     PageNotFoundComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,12 +65,13 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FormsModule
-],
+    FormsModule,
+  ],
   providers: [
     PizzasService,
-    TodosService
+    TodosService,
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

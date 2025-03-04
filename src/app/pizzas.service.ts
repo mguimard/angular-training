@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Pizza } from './pizza';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class PizzasService {
     }
   }
 
-  constructor() {
+  constructor(http: HttpClient) {
     console.log('Constructeur pizza service')
   }
 }

@@ -32,10 +32,10 @@ export class PizzasComponent implements OnDestroy{
     let service = inject(PizzasService);
     
     // version avec un new
-    let service2 = new PizzasService()
+    //let service2 = new PizzasService()
 
     console.log("pizza service", pizzasService == service)
-    console.log("pizza service", pizzasService == service2)
+    //console.log("pizza service", pizzasService == service2)
     console.log('my_promise', this.my_promise)
     
     //this.subscription = this.pizzas$.subscribe();
