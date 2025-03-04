@@ -17,6 +17,8 @@
 <app-show [str]="last_clicked"></app-show>
 
 <input type="text" placeholder="Nouvelle pizza" #new_pizza />
+<input type="number" min="0" max="100" #new_prix />
+<button (click)="addPizza(new_pizza.value, new_prix.value)"> Ajouter </button>
 
 <p>Vous êtes en train de saisir: {{new_pizza.value}} </p>
 
@@ -25,7 +27,7 @@
 <p>Compteur pizza {{ count }}, dernière cliquée: {{ last_clicked }}</p>
 
 @if(show_pizzas){
-    @for(pizza of pizzas; track pizza.name) { 
+    @for(pizza of pizzas$ | async; track pizza.name) { 
 
         <app-pizza 
             appUserLog="pizza"

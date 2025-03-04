@@ -1,5 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { Pizza } from '../pizza';
+import { PizzasService } from '../pizzas.service';
 
 @Component({
     selector: 'app-pizzas',
@@ -8,17 +9,6 @@ import { Pizza } from '../pizza';
     standalone: false
 })
 export class PizzasComponent implements OnDestroy{
-
-  pizzas: Pizza[] = [
-    {
-      name: 'Reine',
-      prix: 12
-    },
-    {
-      name: 'Chorizo',
-      prix: 13
-    }
-  ]
 
   show_pizzas = false;
   count = 0
@@ -33,12 +23,28 @@ export class PizzasComponent implements OnDestroy{
     setTimeout(() => resolve(data) , 2000)
   });
 
-  constructor(){
+  service3 = inject(PizzasService)
+  pizzas$ = this.service3.getPizzas()
+
+  // injection via le constructeur
+  constructor(private pizzasService: PizzasService){
+    // injection à la main
+    let service = inject(PizzasService);
+    
+    // version avec un new
+    let service2 = new PizzasService()
+
+    console.log("pizza service", pizzasService == service)
+    console.log("pizza service", pizzasService == service2)
     console.log('my_promise', this.my_promise)
+    
+    //this.subscription = this.pizzas$.subscribe();
+    //this.subscription.unsubscribe();
   }
 
   ngOnDestroy(): void {
     // nettoyage
+    
   }
 
   togglePizzas() {
@@ -51,10 +57,12 @@ export class PizzasComponent implements OnDestroy{
     this.count++
   }
 
+  addPizza(name: string, _prix: string){
+    let prix = parseInt(_prix, 10)
+    this.pizzasService.addPizzas({name, prix});
+  }
+
   removePizza(pizza:Pizza){
-    let index = this.pizzas.indexOf(pizza)
-    if(index >= 0){
-      this.pizzas.splice(index, 1)
-    }
+    this.pizzasService.removePizza(pizza)
   }
 }

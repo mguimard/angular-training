@@ -17,6 +17,7 @@ import { CounterComponent } from './counter/counter.component';
 import { ShowComponent } from './show/show.component';
 import { UserLogDirective } from './user-log.directive';
 import { CherOuPasCherPipe } from './cher-ou-pas-cher.pipe';
+import { PizzasService } from './pizzas.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { CherOuPasCherPipe } from './cher-ou-pas-cher.pipe';
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    PizzasService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
