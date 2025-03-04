@@ -5,6 +5,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 const myCanActivate : CanActivateFn = (route:  ActivatedRouteSnapshot, state) => {
@@ -17,11 +18,11 @@ const myCanActivate : CanActivateFn = (route:  ActivatedRouteSnapshot, state) =>
 
 const routes: Routes = [
   {path: 'todos/:todoId', component: TodoDetailComponent,
-     canActivate: [myCanActivate]},
-     
+     canActivate: [myCanActivate]},     
   {path: 'pizzas', component: PizzasComponent},
   {path: 'ajout', component:  PizzaFormComponent},
   {path: 'home', component: TodoListComponent},
+  {path: 'contact', component: ContactComponent},
   {path: '**', component: PageNotFoundComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -1,0 +1,47 @@
+<form #contactForm="ngForm" (ngSubmit)="handleSubmit(contactForm)">
+  <label>Email <input name="email" type="email" required ngModel /></label
+  ><br />
+  <label>Titre <input name="titre" type="text" required ngModel /></label>
+  <br />
+  <label
+    >Message <br />
+    <textarea required minlength="50" name="message" ngModel></textarea></label
+  ><br />
+  <button type="submit">Envoyer</button>
+</form>
+
+@if(!contactForm.valid){
+<p>Veuillez corriger les erreurs suivantes :</p>
+<ul>
+
+  @if(!contactForm.control.get('email')?.valid){  
+    <p>le champ email est invalide :</p>
+    @if(contactForm.control.get('email')?.hasError('required')){
+    <p>le champ email est obligatoire</p>
+    } 
+  }
+  
+  @if(!contactForm.control.get('titre')?.valid){   
+    <p>le champ titre est invalide :</p>
+    @if(contactForm.control.get('titre')?.hasError('required')){
+    <p>le champ titre est obligatoire</p>
+    } 
+  }
+  
+  @if(!contactForm.control.get('message')?.valid){
+ 
+    <p>le champ message est invalide :</p>
+    @if(contactForm.control.get('message')?.hasError('required')){
+    <p>le champ message est obligatoire</p>
+    } 
+
+    @if(contactForm.control.get('message')?.hasError('minlength')){
+        <p>
+            le champ message est trop court !             
+            {{ contactForm.control.get('message')?.errors!['minlength'].actualLength }} caractères sur 
+            {{ contactForm.control.get('message')?.errors!['minlength'].requiredLength }}
+        </p>
+    } 
+  }
+</ul>
+}

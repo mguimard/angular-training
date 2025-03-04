@@ -1,12 +1,18 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Todo } from './todo';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, Observable, of, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+const url = 'https://jsonplaceholder.typicode.com/todos'
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TodosService {
 
+  http = inject(HttpClient)
+  private todos: Todo[] = [];
+/*
   private todos: Todo[] = [
     {
       userId: 1,
@@ -26,11 +32,18 @@ export class TodosService {
       title: 'fugiat veniam minus',
       completed: true,
     },
-  ];
+  ];*/
 
   private sub = new BehaviorSubject<Todo[]>(this.todos);
 
-  constructor() {}
+  constructor() {
+    this.fetch();
+  }
+
+  async fetch(){
+    this.todos = await firstValueFrom(this.http.get<Todo[]>(url))
+    this.broadcast();
+  }
 
   getTodo(id:number) : Todo | undefined {
     let filtered = this.todos.filter(t => t.id === id)

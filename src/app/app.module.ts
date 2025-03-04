@@ -34,6 +34,7 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { RxService } from './rx.service';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { RxService } from './rx.service';
     PizzaFormComponent,
     PageNotFoundComponent,
     TodoDetailComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
