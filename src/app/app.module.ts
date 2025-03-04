@@ -33,6 +33,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { RxService } from './rx.service';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import {
   providers: [
     PizzasService,
     TodosService,
+    RxService,
     provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent],

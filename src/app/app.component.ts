@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RxService } from './rx.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'my-app';
+
+  rx = inject(RxService)
 
   foo() {
     let jedi1 = {
