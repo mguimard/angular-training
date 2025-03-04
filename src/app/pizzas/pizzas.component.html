@@ -30,6 +30,7 @@
     @for(pizza of pizzas$ | async; track pizza.name) { 
 
         <app-pizza 
+            [ngClass]="{'cher' : pizza.prix > 12, 'pas-cher': pizza.prix <= 12}"
             appUserLog="pizza"
             [other_input_name]="pizza"
             (pizzaClicked)="handlePizzaEvent($event)"
