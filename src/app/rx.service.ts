@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, range } from 'rxjs';
+import { concatMap, delay, Observable, of, range } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +10,12 @@ export class RxService {
 
     const delayed = delay(1000);
     const numbers = range(1, 10);
-    //let delayed = numbers.pipe(delay(1000));
- 
-    /*delayed.subscribe({
-      next: value => console.log(value),
-      complete: () => console.log('Complete!')
-    });*/
+    
+    let chain = numbers.pipe(
+      concatMap(x => of(x).pipe(delayed))
+    )
 
+    chain.subscribe(data => console.log(data))
 
 /*
     const foo = new Observable((subscriber) => {
