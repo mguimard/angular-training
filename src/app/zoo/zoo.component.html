@@ -1,0 +1,6 @@
+<p>zoo works!</p>
+<button (click)="animal1.name = animal1.name + 'a' ">Change property</button>
+<button (click)="animal1 = {name: 'albert'}">Change ref</button>
+{{ animal1.name }}
+<app-animal [animal]="animal1"></app-animal>
+<app-animal-string [name]="animal1.name"></app-animal-string>

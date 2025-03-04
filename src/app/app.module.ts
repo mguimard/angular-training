@@ -23,6 +23,8 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodosService } from './todos.service';
 import { CompletedCountPipe } from './completed-count.pipe';
 import { SortTodosPipe } from './sort-todos.pipe';
+import { ZooComponent } from "./zoo/zoo.component";
+import { AnimalStringComponent } from './animal-string/animal-string.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { SortTodosPipe } from './sort-todos.pipe';
     TodoListComponent,
     TodoItemComponent,
     CompletedCountPipe,
-    SortTodosPipe
+    SortTodosPipe,
+    ZooComponent,
+    AnimalStringComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,7 @@ import { SortTodosPipe } from './sort-todos.pipe';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule    
+    MatListModule
 ],
   providers: [
     PizzasService,
