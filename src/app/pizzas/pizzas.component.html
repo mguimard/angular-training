@@ -1,5 +1,15 @@
 <p>pizzas works!</p>
 
+<p>{{ my_promise }}</p>
+<p>{{ my_promise | async }}</p>
+
+<ul>
+@for(item of my_promise2 | async; track $index ){
+    <li>{{ item }}</li>
+}@empty {
+    <p>Waiting for data...</p>
+}
+</ul>
 
 <app-show></app-show>
 <app-show str="hello world"></app-show>
