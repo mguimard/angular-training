@@ -1,4 +1,6 @@
 <span>
+  <a [routerLink]="['/todos', todo.id]">Todo {{todo.id}}</a>
+
   <label
     [style.text-decoration-line]="todo.completed ? 'line-through' : 'none'"
   >

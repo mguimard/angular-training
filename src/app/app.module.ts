@@ -25,6 +25,10 @@ import { CompletedCountPipe } from './completed-count.pipe';
 import { SortTodosPipe } from './sort-todos.pipe';
 import { ZooComponent } from "./zoo/zoo.component";
 import { AnimalStringComponent } from './animal-string/animal-string.component';
+import { PizzaFormComponent } from './pizza-form/pizza-form.component';
+import { FormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,10 @@ import { AnimalStringComponent } from './animal-string/animal-string.component';
     CompletedCountPipe,
     SortTodosPipe,
     ZooComponent,
-    AnimalStringComponent
+    AnimalStringComponent,
+    PizzaFormComponent,
+    PageNotFoundComponent,
+    TodoDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,8 @@ import { AnimalStringComponent } from './animal-string/animal-string.component';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
 ],
   providers: [
     PizzasService,

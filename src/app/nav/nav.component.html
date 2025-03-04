@@ -5,9 +5,11 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLinkActive="my-class" routerLink="home">Home (todos)</a>
+      <a mat-list-item routerLinkActive="my-class" routerLink="pizzas">Pizzas</a>
+      <a mat-list-item routerLinkActive="my-class" [routerLink]="'pizzas'">Pizzas</a>
+      <a mat-list-item routerLinkActive="my-class" [routerLink]="['todos', 1234]">Todo 1234</a>
+      <a mat-list-item routerLinkActive="my-class" routerLink="ajout">AJout pizza</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -37,9 +39,12 @@
   <app-todo-list></app-todo-list>
   <app-todo-list></app-todo-list>
 -->
-
+<!--
     <app-zoo></app-zoo>
-
-
+  -->
+<!--
+  <app-pizza-form></app-pizza-form>
+-->
+  <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

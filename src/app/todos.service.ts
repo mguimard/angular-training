@@ -32,6 +32,17 @@ export class TodosService {
 
   constructor() {}
 
+  getTodo(id:number) : Todo | undefined {
+    let filtered = this.todos.filter(t => t.id === id)
+    
+    if(filtered.length){
+      return filtered[0]
+    }
+    else {
+      return undefined
+    }
+  }
+
   /**
    * 
    * @returns an observable on a todo array

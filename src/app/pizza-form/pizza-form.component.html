@@ -1,0 +1,24 @@
+<h1>Ajouter une pizza</h1>
+
+<form #myForm="ngForm" (submit)="myForm.valid && debug(myForm)">
+    <input type="text" name="name" required ngModel /> <br/>
+    <input type="number" name="prix" min="5" max="100" ngModel /><br/>
+    <button type="submit">Ajouter</button><br/>
+</form>
+
+@if(!myForm.valid) {
+    <p>Fais un effort...</p>
+    @if(!myForm.controls['name'].valid){
+        <p>Le champ name doit être renseigné</p>
+    }
+
+    @if(!myForm.controls['prix'].valid){
+        <p>Le champ prix n'est pas valide</p>
+    }
+}
+
+<pre>
+   valid: {{ myForm.valid | json }}
+   erros: {{ myForm.errors | json }}
+   controls: {{ myForm.controls['name'] }}
+</pre>
