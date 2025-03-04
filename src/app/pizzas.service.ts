@@ -1,42 +1,50 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Pizza } from './pizza';
 import { HttpClient } from '@angular/common/http';
 
+const url =
+  'https://raw.githubusercontent.com/mguimard/angular-training/refs/heads/master/pizzas.json';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PizzasService {
+  http = inject(HttpClient);
 
-  private pizzas: Pizza[] = [
-    {
-      name: 'Reine',
-      prix: 12
-    },
-    {
-      name: 'Chorizo',
-      prix: 13
-    }
-  ]
-
-  private obs$ = of(this.pizzas)
-
-  getPizzas() : Observable<Pizza[]> {
-    return this.obs$;
+  getPizzas(): Observable<Pizza[]> {
+    return this.http.get<Pizza[]>(url);
   }
 
-  addPizzas(pizza: Pizza){
-    this.pizzas.push(pizza)
+  addPizzas(pizza: Pizza) {
+    this.http.post<Response>(url, pizza).subscribe({
+      next: (res) => {
+        console.log('success');
+      },
+      error: (err) => {
+        console.log('ooops error');
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
   }
 
-  removePizza(pizza: Pizza){
-    let index = this.pizzas.indexOf(pizza)
-    if(index >= 0){
-      this.pizzas.splice(index, 1)
-    }
+  removePizza(pizza: Pizza) {
+    this.http.delete<Response>(url + '/' + pizza.name).subscribe({
+      next: (res) => {
+        console.log('success');
+      },
+      error: (err) => {
+        console.log('ooops error');
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
   }
 
-  constructor(http: HttpClient) {
-    console.log('Constructeur pizza service')
+  constructor() {
+    console.log('Constructeur pizza service');
   }
 }
