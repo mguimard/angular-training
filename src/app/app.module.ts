@@ -16,6 +16,7 @@ import { PizzaComponent } from './pizza/pizza.component';
 import { CounterComponent } from './counter/counter.component';
 import { ShowComponent } from './show/show.component';
 import { UserLogDirective } from './user-log.directive';
+import { CherOuPasCherPipe } from './cher-ou-pas-cher.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserLogDirective } from './user-log.directive';
     PizzaComponent,
     CounterComponent,
     ShowComponent,
-    UserLogDirective
+    UserLogDirective,
+    CherOuPasCherPipe
   ],
   imports: [
     BrowserModule,

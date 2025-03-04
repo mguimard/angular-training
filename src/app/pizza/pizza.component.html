@@ -1,5 +1,5 @@
 <p>
-    pizza works! {{ pizza_input | json }} 
+    pizza works! {{ pizza_input | cherOuPasCher:5 | uppercase }} 
     <button 
         (click)="pizzaClicked.emit(pizza_input)" 
         appUserLog="Bouton_Pizza"
