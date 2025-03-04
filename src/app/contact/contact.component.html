@@ -15,33 +15,39 @@
 <ul>
 
   @if(!contactForm.control.get('email')?.valid){  
-    <p>le champ email est invalide :</p>
+    <li>le champ email est invalide :</li>
+    <ul>
     @if(contactForm.control.get('email')?.hasError('required')){
-    <p>le champ email est obligatoire</p>
+    <li>le champ email est obligatoire</li>
     } 
+    </ul>
   }
   
   @if(!contactForm.control.get('titre')?.valid){   
-    <p>le champ titre est invalide :</p>
+    <li>le champ titre est invalide :</li>
+    <ul>
     @if(contactForm.control.get('titre')?.hasError('required')){
-    <p>le champ titre est obligatoire</p>
+    <li>le champ titre est obligatoire</li>
     } 
+</ul>
   }
   
   @if(!contactForm.control.get('message')?.valid){
  
-    <p>le champ message est invalide :</p>
+    <li>le champ message est invalide :</li>
+    <ul>
     @if(contactForm.control.get('message')?.hasError('required')){
-    <p>le champ message est obligatoire</p>
+    <li>le champ message est obligatoire</li>
     } 
 
     @if(contactForm.control.get('message')?.hasError('minlength')){
-        <p>
+        <li>
             le champ message est trop court !             
             {{ contactForm.control.get('message')?.errors!['minlength'].actualLength }} caractères sur 
             {{ contactForm.control.get('message')?.errors!['minlength'].requiredLength }}
-        </p>
+        </li>
     } 
+    </ul>
   }
 </ul>
 }
