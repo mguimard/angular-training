@@ -18,6 +18,11 @@ import { ShowComponent } from './show/show.component';
 import { UserLogDirective } from './user-log.directive';
 import { CherOuPasCherPipe } from './cher-ou-pas-cher.pipe';
 import { PizzasService } from './pizzas.service';
+import { TodoListComponent } from "./todo-list/todo-list.component";
+import { TodoItemComponent } from './todo-item/todo-item.component';
+import { TodosService } from './todos.service';
+import { CompletedCountPipe } from './completed-count.pipe';
+import { SortTodosPipe } from './sort-todos.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import { PizzasService } from './pizzas.service';
     CounterComponent,
     ShowComponent,
     UserLogDirective,
-    CherOuPasCherPipe
+    CherOuPasCherPipe,
+    TodoListComponent,
+    TodoItemComponent,
+    CompletedCountPipe,
+    SortTodosPipe
   ],
   imports: [
     BrowserModule,
@@ -40,10 +49,11 @@ import { PizzasService } from './pizzas.service';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
-  ],
+    MatListModule    
+],
   providers: [
-    PizzasService
+    PizzasService,
+    TodosService
   ],
   bootstrap: [AppComponent]
 })

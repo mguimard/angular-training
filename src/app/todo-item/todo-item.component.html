@@ -1,0 +1,13 @@
+<span>
+  <label
+    [style.text-decoration-line]="todo.completed ? 'line-through' : 'none'"
+  >
+    {{ todo.title }}
+    <input
+      #checkbox
+      type="checkbox"
+      [checked]="todo.completed"
+      (change)="completed.emit(checkbox.checked)"
+    />
+  </label>
+</span>
