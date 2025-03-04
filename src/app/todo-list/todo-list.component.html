@@ -1,15 +1,23 @@
-<input type="text" #new_todo /> 
-<button (click)="addTodo(new_todo.value)">Ajouter</button>
+<input type="text" #new_todo />
+<button (click)="service.addTodo(new_todo.value)">Ajouter</button>
 
-<p>Todos (pipe version): {{ (todos$| async) | completedCount }} / {{ (todos$|async)?.length }} </p>
+<p>
+  Todos (pipe version): {{ todos$ | async | completedCount }} /
+  {{ (todos$ | async)?.length }}
+</p>
 
-  <p>Todos (manual count version): {{ completedTodos }} / {{ (todos$|async)?.length }} </p>
-  
+<p>
+  Todos (manual count version): {{ completedTodos }} /
+  {{ (todos$ | async)?.length }}
+</p>
+
 <ul>
   @for((todo of (todos$ | async)| sortTodos) ; track todo.id){
   <li>
-    <app-todo-item 
-    [todo]="todo" (completed)="service.update(todo, $event)"></app-todo-item>
+    <app-todo-item
+      [todo]="todo"
+      (completed)="service.update(todo, $event)"
+    ></app-todo-item>
   </li>
   } @empty {
   <li><p>Aucun todo</p></li>

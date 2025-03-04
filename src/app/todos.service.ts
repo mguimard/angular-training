@@ -32,10 +32,19 @@ export class TodosService {
 
   constructor() {}
 
-  getTodos(): Observable<Todo[]> {
+  /**
+   * 
+   * @returns an observable on a todo array
+   */
+  public getTodos(): Observable<Todo[]> {
     return this.sub.asObservable()
   }
-  addTodo(title:string): void {
+
+  /**
+   * 
+   * @param title a simple string that will be the todo's title
+   */
+  public addTodo(title:string): void {
     this.todos.push({
       title,
       userId: Date.now(),
@@ -45,13 +54,19 @@ export class TodosService {
     this.broadcast()
   }
 
-  update(todo: Todo, completed: boolean) {
+  public update(todo: Todo, completed: boolean) {
     let index = this.todos.indexOf(todo)
+    
+    if(index < 0){
+      throw Error("Oops pas trouvé")
+    }
+    
     this.todos[index].completed = completed;
     this.broadcast();
   }
 
   private broadcast(){
+    this.todos = JSON.parse(JSON.stringify(this.todos));
     this.sub.next(this.todos);
   }
 }

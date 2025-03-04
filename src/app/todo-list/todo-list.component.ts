@@ -1,6 +1,7 @@
 import { Component, inject, OnDestroy } from '@angular/core';
 import { TodosService } from '../todos.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Todo } from '../todo';
 
 @Component({
   selector: 'app-todo-list',  
@@ -9,8 +10,9 @@ import { Subscription } from 'rxjs';
   standalone: false
 })
 export class TodoListComponent implements OnDestroy{
+  
   service = inject(TodosService)
-  todos$ = this.service.getTodos()
+  todos$: Observable<Todo[]> = this.service.getTodos()
   completedTodos: number = 0;
   subscription: Subscription;
 
@@ -22,12 +24,7 @@ export class TodoListComponent implements OnDestroy{
     })
   }
 
-  addTodo(title:string){
-    this.service.addTodo(title)
-  }
-
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
-  }
-  
+  }  
 }

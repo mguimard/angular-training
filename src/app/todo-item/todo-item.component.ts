@@ -11,6 +11,7 @@ import { Todo } from '../todo';
 export class TodoItemComponent {
   @Input() todo!: Todo;
   @Output() completed = new EventEmitter<boolean>();
+  
   constructor(){
     console.log('TodoItemComponent')
   }
