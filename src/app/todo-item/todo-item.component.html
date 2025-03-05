@@ -1,15 +1,15 @@
-<span>
-  <a [routerLink]="['/todos', todo.id]">Todo {{todo.id}}</a>
+<button
+  [routerLink]="['/todos', todo.id]"
+  mat-icon-button
+  aria-label="Example icon button with a vertical three dot icon"
+>
+  <mat-icon>link</mat-icon>
+</button>
 
-  <label
-    [style.text-decoration-line]="todo.completed ? 'line-through' : 'none'"
-  >
-    {{ todo.title }}
-    <input
-      #checkbox
-      type="checkbox"
-      [checked]="todo.completed"
-      (change)="completed.emit(checkbox.checked)"
-    />
-  </label>
-</span>
+<mat-slide-toggle
+  #checkbox
+  [checked]="todo.completed"
+  (change)="completed.emit(checkbox.checked)"
+>
+  {{ todo.title }}
+</mat-slide-toggle>

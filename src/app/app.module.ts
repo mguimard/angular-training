@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VoitureComponent } from './voiture/voiture.component';
 import { AnimalComponent } from './animal/animal.component';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaComponent } from './pizza/pizza.component';
 import { CounterComponent } from './counter/counter.component';
@@ -29,12 +24,10 @@ import { PizzaFormComponent } from './pizza-form/pizza-form.component';
 import { FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import { RxService } from './rx.service';
 import { ContactComponent } from './contact/contact.component';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -57,24 +50,20 @@ import { ContactComponent } from './contact/contact.component';
     PizzaFormComponent,
     PageNotFoundComponent,
     TodoDetailComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
     FormsModule,
+    AngularMaterialModule,
   ],
   providers: [
     PizzasService,
     TodosService,
     RxService,
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent],
 })

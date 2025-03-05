@@ -27,7 +27,7 @@ Depuis un terminal, lancer la commande
 ng build
 ```
 
-Placer ensuite votre terminal dans le dossier dist/my-app et lancer la commande suivante
+Placer ensuite votre terminal dans le dossier dist/my-app/browser et lancer la commande suivante
 
 ```
 npx http-server

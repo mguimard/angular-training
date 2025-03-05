@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, inject, OnDestroy } from '@angular/core';
 import { TodosService } from '../todos.service';
 import { Observable, Subscription } from 'rxjs';
@@ -28,19 +29,36 @@ import {
       transition('open => closed', [animate('1s')]),
       transition('closed => open', [animate('0.5s')]),
     ]),
-  ],
+    trigger('completedTodos',[
+      state('low',style({fontWeight:'normal', backgroundColor:'red'})),
+      state('medium',style({fontWeight:'bold', backgroundColor:'yellow'})),
+      state('high',style({fontWeight:'bolder', backgroundColor:'green'})),
+      transition('* => *', [animate('1s')])
+    ])
+  ]
 })
 export class TodoListComponent implements OnDestroy {
   service = inject(TodosService);
   todos$: Observable<Todo[]> = this.service.getTodos();
-  completedTodos: number = 0;
+  completedTodos = 0;
   subscription: Subscription;
   isOpen = false;
+  currentAnimationState = 'low'
 
   constructor() {
     this.subscription = this.todos$.subscribe((data) => {
       console.log('Execute count');
       this.completedTodos = data.filter((t) => t.completed).length;
+
+      if(this.completedTodos < 50){
+        this.currentAnimationState = 'low'
+      }
+      else if(this.completedTodos < 150){
+        this.currentAnimationState = 'medium'
+      } 
+      else {
+        this.currentAnimationState = 'high'
+      }
     });
   }
 

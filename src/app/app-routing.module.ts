@@ -24,8 +24,8 @@ const routes: Routes = [
   {path: 'ajout', component:  PizzaFormComponent},
   {path: 'home', component: TodoListComponent},
   {path: 'contact', component: ContactComponent},
-  {path: '**', component: PageNotFoundComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full' }
+  {path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: '**', component: PageNotFoundComponent} // must be the last route
 ];
 
 @NgModule({
