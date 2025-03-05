@@ -3,8 +3,8 @@ import { Todo } from './todo';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-//const url = 'https://jsonplaceholder.typicode.com/todos'
-const url = 'https://raw.githubusercontent.com/mguimard/angular-training/refs/heads/master/TP3.md'
+const url = 'https://jsonplaceholder.typicode.com/todos'
+//const url = 'https://raw.githubusercontent.com/mguimard/angular-training/refs/heads/master/src/pizzas.json'
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,7 @@ export class TodosService {
     try{
       this.todos = await firstValueFrom(this.http.get<Todo[]>(url)) || []
       console.log('Ok,', this.todos)
+      this.broadcast()
     } catch(err){
       console.log('Oooops, got an error', err)
     }    

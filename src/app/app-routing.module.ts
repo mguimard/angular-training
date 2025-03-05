@@ -8,7 +8,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { ContactComponent } from './contact/contact.component';
 
 
-const myCanActivate : CanActivateFn = (route:  ActivatedRouteSnapshot, state) => {
+const myCanActivate : CanActivateFn = (route:  ActivatedRouteSnapshot, /*state*/) => {
   if(route.params['todoId'] === '3') {
     //NotificationService.toast('Interdit..');
     return false;

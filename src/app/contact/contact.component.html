@@ -1,5 +1,5 @@
 <form #contactForm="ngForm" (ngSubmit)="handleSubmit(contactForm)">
-  <label>Email <input name="email" type="email" required ngModel /></label
+  <label>Email <input name="email" type="email" email required ngModel /></label
   ><br />
   <label>Titre <input name="titre" type="text" required ngModel /></label>
   <br />
@@ -20,6 +20,9 @@
     @if(contactForm.control.get('email')?.hasError('required')){
     <li>le champ email est obligatoire</li>
     } 
+    @if(contactForm.control.get('email')?.hasError('email')){
+      <li>le champ email n'est pas un email valide</li>
+      } 
     </ul>
   }
   
