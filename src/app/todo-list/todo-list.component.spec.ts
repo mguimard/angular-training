@@ -8,12 +8,10 @@ import { SortTodosPipe } from '../sort-todos.pipe';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { FakeTodoItemComponent, FakeTodoService } from 'src/test/fake';
-import { Todo } from '../todo';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
-  let fakeService : FakeTodoService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
