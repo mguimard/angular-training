@@ -30,7 +30,7 @@ ng build
 Placer ensuite votre terminal dans le dossier dist/my-app/browser et lancer la commande suivante
 
 ```
-npx http-server
+npx http-server --proxy 'http://localhost:8080?' 
 ```
 
 Cette commande vous donne l'url à utiliser dans votre navigateur pour tester votre build.
