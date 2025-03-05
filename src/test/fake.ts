@@ -1,28 +1,25 @@
 /* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Todo } from 'src/app/todo';
+ 
 
-const originalList: Todo [] = [
-  {id: 123, title: 'whatever', userId: 123, completed: false},
-  {id: 456, title: 'whatever', userId: 456, completed: true},
-];
+export class FakeTodoService {
 
-const sub = new BehaviorSubject<Todo[]>(originalList);
+  originalList: Todo [] = [
+    {id: 123, title: 'whatever', userId: 123, completed: false},
+    {id: 456, title: 'whatever', userId: 456, completed: true},
+  ];
 
-export const FakeTodoService = {
+  sub = new BehaviorSubject<Todo[]>(this.originalList);
 
-  getTodos:() => sub.asObservable(),
+  getTodos(){
+    return this.sub.asObservable();
+  }
 
-  reset : () => {
-    sub.next(originalList)
-  },
-
-  fakeAdd : () => {
-    const new_list : Todo[] = [...originalList, 
-      {id: 789, title: 'whatever', userId: 789, completed: true}
-    ]
-    sub.next(new_list)
+  addTodo (todo:Todo) {
+    this.originalList.push(todo)   
+    this.sub.next([...this.originalList])
   }
 }
 

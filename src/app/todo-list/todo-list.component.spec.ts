@@ -8,10 +8,12 @@ import { SortTodosPipe } from '../sort-todos.pipe';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { FakeTodoItemComponent, FakeTodoService } from 'src/test/fake';
+import { Todo } from '../todo';
 
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
+  let fakeService : FakeTodoService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,11 +27,11 @@ describe('TodoListComponent', () => {
       ],
       providers: [
         provideNoopAnimations(),
-        {provide: TodosService, useValue: FakeTodoService}
+        {provide: TodosService, useClass: FakeTodoService}
       ]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(TodoListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -51,14 +53,17 @@ describe('TodoListComponent', () => {
 
   it('should display a new todo, when the services adds one', 
     fakeAsync(() => {
-    
-    FakeTodoService.fakeAdd();
+           
+    component.service.addTodo('whatever');
+
+    fixture.detectChanges();
+
     tick();
 
     const el : HTMLElement = fixture.debugElement.query(By.css('[data-unit-testing="completed-todos"]'))
      .nativeElement;
 
-   expect(el.textContent).toContain('2 / 3')
+   expect(el.textContent).toContain('1 / 3')
 
  }));
 
