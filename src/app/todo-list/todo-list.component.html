@@ -1,6 +1,10 @@
 <input type="text" #new_todo />
 <button (click)="service.addTodo(new_todo.value)">Ajouter</button>
 
+<button (click)="isOpen = !isOpen">Ouvrir/fermer</button>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p></div>
+
 <p>
   Todos (pipe version): {{ todos$ | async | completedCount }} /
   {{ (todos$ | async)?.length }}
