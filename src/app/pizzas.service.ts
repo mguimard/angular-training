@@ -10,6 +10,7 @@ const url =
   providedIn: 'root',
 })
 export class PizzasService {
+  
   http = inject(HttpClient);
 
   getPizzas(): Observable<Pizza[]> {

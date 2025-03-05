@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/prefer-function-type */
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @angular-eslint/prefer-standalone */
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, InjectionToken, Injector, OnDestroy, OnInit, runInInjectionContext } from '@angular/core';
 import { TodosService } from '../todos.service';
 import { Observable, Subscription } from 'rxjs';
 import { Todo } from '../todo';
@@ -37,7 +41,7 @@ import {
     ])
   ]
 })
-export class TodoListComponent implements OnDestroy {
+export class TodoListComponent implements OnInit, OnDestroy {
   service = inject(TodosService);
   todos$: Observable<Todo[]> = this.service.getTodos();
   completedTodos = 0;
@@ -61,6 +65,11 @@ export class TodoListComponent implements OnDestroy {
       }
     });
   }
+
+  ngOnInit(): void {
+    console.log('init')
+  }
+  
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

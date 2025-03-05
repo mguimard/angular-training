@@ -1,12 +1,18 @@
 import { TestBed } from '@angular/core/testing';
-
 import { RxService } from './rx.service';
 
 describe('RxService', () => {
   let service: RxService;
 
+
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ 
+       ],
+       providers:[
+       ]
+    });
+
     service = TestBed.inject(RxService);
   });
 

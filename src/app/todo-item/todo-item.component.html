@@ -5,11 +5,10 @@
 >
   <mat-icon>link</mat-icon>
 </button>
-
 <mat-slide-toggle
   #checkbox
   [checked]="todo.completed"
   (change)="completed.emit(checkbox.checked)"
 >
-  {{ todo.title }}
+{{ todo.title }}
 </mat-slide-toggle>

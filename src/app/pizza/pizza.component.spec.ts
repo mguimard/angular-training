@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PizzaComponent } from './pizza.component';
+import { CherOuPasCherPipe } from '../cher-ou-pas-cher.pipe';
 
 describe('PizzaComponent', () => {
   let component: PizzaComponent;
@@ -8,10 +9,14 @@ describe('PizzaComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PizzaComponent]
+      declarations: [PizzaComponent, CherOuPasCherPipe]
     });
     fixture = TestBed.createComponent(PizzaComponent);
     component = fixture.componentInstance;
+    component.pizza_input = {
+      name: 'saumon',
+      prix: 12
+    }
     fixture.detectChanges();
   });
 

@@ -1,3 +1,5 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
+/* eslint-disable @angular-eslint/no-input-rename */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pizza } from '../pizza';
 import { CherOuPasCherPipe } from '../cher-ou-pas-cher.pipe';
@@ -21,8 +23,8 @@ export class PizzaComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('(ngOnInit) Pizza en input:', this.pizza_input)
-        let pipe = new CherOuPasCherPipe()
-        let s : string = pipe.transform(this.pizza_input, 5);
+        const pipe = new CherOuPasCherPipe()
+        const s : string = pipe.transform(this.pizza_input, 5);
         console.log(s)
     }
 
