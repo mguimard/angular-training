@@ -4,7 +4,7 @@ import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 //const url = 'https://jsonplaceholder.typicode.com/todos'
-const url = 'http://localhost:8080/empty.json'
+const url = 'https://raw.githubusercontent.com/mguimard/angular-training/refs/heads/master/TP3.md'
 
 @Injectable({
   providedIn: 'root'
@@ -51,9 +51,9 @@ export class TodosService {
     */
 
     try{
-      this.todos = await firstValueFrom(this.http.get<Todo[]>(url))
-      this.broadcast();
-    }catch(err){
+      this.todos = await firstValueFrom(this.http.get<Todo[]>(url)) || []
+      console.log('Ok,', this.todos)
+    } catch(err){
       console.log('Oooops, got an error', err)
     }    
   }
