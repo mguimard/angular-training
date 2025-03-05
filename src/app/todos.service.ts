@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { inject, Injectable } from '@angular/core';
 import { Todo } from './todo';
 import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
@@ -10,7 +11,8 @@ const url = 'https://jsonplaceholder.typicode.com/todos'
   providedIn: 'root'
 })
 export class TodosService {
-
+  latest_error:any = null;
+  
   http = inject(HttpClient)
   private todos: Todo[] = [];
 /*
@@ -55,7 +57,7 @@ export class TodosService {
       console.log('Ok,', this.todos)
       this.broadcast()
     } catch(err){
-      console.log('Oooops, got an error', err)
+      this.latest_error = err;
     }    
   }
 
@@ -82,21 +84,23 @@ export class TodosService {
    * 
    * @param title a simple string that will be the todo's title
    */
-  public addTodo(title:string): void {
-    this.todos.push({
+  public addTodo(title:string): Todo {
+    const todo = {
       title,
       userId: Date.now(),
       id: Date.now(),
       completed: false
-    })
+    };
+    this.todos.push(todo)
     this.broadcast()
+    return todo;
   }
 
-  public update(todo: Todo, completed: boolean) {
+  public update(todo: Todo, completed: boolean) : void {
     const index = this.todos.indexOf(todo)
     
     if(index < 0){
-      throw Error("Oops pas trouvé")
+      throw 'Oops pas trouvé'
     }
     
     this.todos[index].completed = completed;
@@ -104,7 +108,6 @@ export class TodosService {
   }
 
   private broadcast(){
-    this.todos = JSON.parse(JSON.stringify(this.todos));
     this.sub.next(this.todos);
   }
 }

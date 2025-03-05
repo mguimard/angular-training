@@ -19,14 +19,14 @@
       </p>
       -->
 
-      <p [@completedTodos]="currentAnimationState">
+      <p [@completedTodos]="currentAnimationState" data-unit-testing="completed-todos">
         Todos (manual count version): {{ completedTodos }} /
         {{ (todos$ | async)?.length }}
       </p>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-list role="list">
+    <mat-list role="list">      
       @for((todo of (todos$ | async)| sortTodos) ; track todo.id){
       <mat-list-item role="listitem">
         <app-todo-item
