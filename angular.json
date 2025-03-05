@@ -111,7 +111,7 @@
           }
         },
         "e2e": {
-          "builder": "playwright-ng-schematics:playwright",
+          "builder": "@cypress/schematic:cypress",
           "options": {
             "devServerTarget": "my-app:serve"
           },

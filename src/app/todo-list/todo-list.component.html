@@ -1,10 +1,10 @@
 <mat-form-field>
   <mat-label>Ajouter un todo ici</mat-label>
-  <input #new_todo matInput placeholder="Titre..." />
+  <input data-cy="new-todo" #new_todo matInput placeholder="Titre..." />
   <mat-icon matSuffix>event_list</mat-icon>
 </mat-form-field>
 
-<button type="button" mat-button (click)="service.addTodo(new_todo.value)">
+<button  data-cy="add-todo" type="button" mat-button (click)="service.addTodo(new_todo.value)">
   <mat-icon>add_box</mat-icon>
 </button>
 
