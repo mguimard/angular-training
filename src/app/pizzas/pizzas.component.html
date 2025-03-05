@@ -1,44 +1,28 @@
 <p>pizzas works!</p>
 
-<p>{{ my_promise }}</p>
-<p>{{ my_promise | async }}</p>
-
-<ul>
-@for(item of my_promise2 | async; track $index ){
-    <li>{{ item }}</li>
-}@empty {
-    <p>Waiting for data...</p>
-}
-</ul>
-
-<app-show></app-show>
-<app-show str="hello world"></app-show>
-<app-show [str]="'hello world'"></app-show>
-<app-show [str]="last_clicked"></app-show>
-
 <input type="text" placeholder="Nouvelle pizza" #new_pizza />
-<input type="number" min="0" max="100" #new_prix />
+<label>Prix <input  name="prix" type="number" min="0" max="100" #new_prix /></label>
 <button (click)="addPizza(new_pizza.value, new_prix.value)"> Ajouter </button>
 
 <p>Vous êtes en train de saisir: {{new_pizza.value}} </p>
 
-<button (click)="togglePizzas()">Toogle Pizzas</button>
+<button (click)="togglePizzas()">Toggle Pizzas</button>
 
 <p>Compteur pizza {{ count }}, dernière cliquée: {{ last_clicked }}</p>
 
-@if(show_pizzas){
-    @for(pizza of pizzas$ | async; track pizza.name) { 
+<div [@affichePizzas]="show_pizzas ? 'affiche' : 'cache'">
+@for(pizza of pizzas$ | async; track pizza.name) { 
 
-        <app-pizza 
-            [ngClass]="{'cher' : pizza.prix > 12, 'pas-cher': pizza.prix <= 12}"
-            appUserLog="pizza"
-            [other_input_name]="pizza"
-            (pizzaClicked)="handlePizzaEvent($event)"
-            (removeRequested)="removePizza(pizza)"
-            >
-        </app-pizza>
+    <app-pizza 
+        [ngClass]="{'cher' : pizza.prix > 12, 'pas-cher': pizza.prix <= 12}"
+        appUserLog="pizza"
+        [other_input_name]="pizza"
+        (pizzaClicked)="handlePizzaEvent($event)"
+        (removeRequested)="removePizza(pizza)"
+        >
+    </app-pizza>
 
-    } @empty {
-        <p>Aucune pizza dans la liste</p>
-    }    
+} @empty {
+    <p>Aucune pizza dans la liste</p>
 }
+</div>
