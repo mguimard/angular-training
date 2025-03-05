@@ -1,9 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { Todo } from './todo';
-import { BehaviorSubject, firstValueFrom, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-const url = 'https://jsonplaceholder.typicode.com/todos'
+//const url = 'https://jsonplaceholder.typicode.com/todos'
+const url = 'http://localhost:8080/empty.json'
 
 @Injectable({
   providedIn: 'root'
@@ -40,13 +41,25 @@ export class TodosService {
     this.fetch();
   }
 
-  async fetch(){
-    this.todos = await firstValueFrom(this.http.get<Todo[]>(url))
-    this.broadcast();
+  private async fetch(){
+
+    /*
+    const subscription = this.http.get<Todo[]>(url).subscribe((data) => {
+        this.todos = data;
+        subscription.unsubscribe();
+    })
+    */
+
+    try{
+      this.todos = await firstValueFrom(this.http.get<Todo[]>(url))
+      this.broadcast();
+    }catch(err){
+      console.log('Oooops, got an error', err)
+    }    
   }
 
   getTodo(id:number) : Todo | undefined {
-    let filtered = this.todos.filter(t => t.id === id)
+    const filtered = this.todos.filter(t => t.id === id)
     
     if(filtered.length){
       return filtered[0]
@@ -79,7 +92,7 @@ export class TodosService {
   }
 
   public update(todo: Todo, completed: boolean) {
-    let index = this.todos.indexOf(todo)
+    const index = this.todos.indexOf(todo)
     
     if(index < 0){
       throw Error("Oops pas trouvé")

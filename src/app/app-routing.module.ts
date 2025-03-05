@@ -17,6 +17,7 @@ const myCanActivate : CanActivateFn = (route:  ActivatedRouteSnapshot, state) =>
 }
 
 const routes: Routes = [
+  {path:'users', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   {path: 'todos/:todoId', component: TodoDetailComponent,
      canActivate: [myCanActivate]},     
   {path: 'pizzas', component: PizzasComponent},

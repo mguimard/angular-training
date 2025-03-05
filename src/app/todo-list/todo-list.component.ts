@@ -36,7 +36,7 @@ export class TodoListComponent implements OnDestroy {
   completedTodos: number = 0;
   subscription: Subscription;
   isOpen = false;
-  
+
   constructor() {
     this.subscription = this.todos$.subscribe((data) => {
       console.log('Execute count');
