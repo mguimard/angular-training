@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './factures-new.component.html',
   styleUrl: './factures-new.component.css'
 })
-export class FacturesNewComponent {
+export default class FacturesNewComponent {
 
 }
