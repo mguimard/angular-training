@@ -60,4 +60,9 @@ Générer les différents composants de notre application pour réaliser cette a
 
 Depuis la console DevTools accéder à l'onglet Network et vérifier que les modules sont bien chargés à la demande.
 
-Lancer la commande `ng build --prod` et inspecter le dossier `dist`. Vérifier que les chunks ont bien été générés.
+Lancer la commande `ng build` et inspecter le dossier `dist`. Vérifier que les chunks ont bien été générés.
+
+## Bonus: esbuilder-visualize
+
+Lancer la commande `ng build --stats-json` et utiliser https://esbuild.github.io/analyze/ pour visualiser la répartition des chunks
+
