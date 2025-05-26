@@ -1,0 +1,10 @@
+<p>
+  home works!
+</p>
+
+<button type="button" (click)="loadFruitComponent()">Load component</button>
+
+<ng-template [ngIf]="fruitComponent | async">
+  <ng-container *ngComponentOutlet="fruitComponent | async">
+  </ng-container>
+</ng-template>

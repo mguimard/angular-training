@@ -1,0 +1,9 @@
+<button (click)="sort()" type="button">Sort</button>
+
+
+@for(dog of dogs ; track $index){
+<app-dog [dog]="dog"></app-dog>
+
+}
+
+<router-outlet />
