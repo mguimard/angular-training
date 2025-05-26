@@ -1,0 +1,17 @@
+<p>fruits works!</p>
+{{ fruits | json }}
+
+<input #localInput type="text" title="New fruit" placeholder="Some fruit name" />
+<button type="button" (click)="addFruit(localInput.value); localInput.value = '' ">Add a fruit</button>
+
+
+@for(fruit of fruits; track fruit.id){
+<app-fruit [fruit]="fruit" (removeRequest)="removeFruit(fruit)"></app-fruit>
+<button (click)="removeFruit(fruit)" type="button">Remove from parent</button>
+}
+
+
+@for(fruit of fruits$ | async; track fruit.id){
+<app-fruit [fruit]="fruit" (removeRequest)="removeFruit(fruit)"></app-fruit>
+<button (click)="removeFruit(fruit)" type="button">Remove from parent</button>
+}
