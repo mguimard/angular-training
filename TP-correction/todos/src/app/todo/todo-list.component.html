@@ -1,0 +1,5 @@
+<p>todo-list works!</p>
+
+@for(todo of todos$| async ; track todo.id){
+<app-todo [todo]="todo"></app-todo>
+}
