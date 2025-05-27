@@ -1,0 +1,11 @@
+@if(disabled){
+<p>Champ désactivé</p>
+} @else{
+<div class="container" #ratingEl>
+  <p>Define a rating</p>
+
+  <span *ngFor="let i of ratings" [ngClass]="{'checked': rating >= i}" (click)="ratingClicked(i)">🟊
+  </span>
+
+</div>
+}

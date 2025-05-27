@@ -1,0 +1,22 @@
+<h1>
+  Demo ControlValueAccessor
+</h1>
+
+<form [formGroup]="formGroup">
+  Rating 1 :
+  <app-ratingbar formControlName="rating1" (change)="rating1Event($event)"></app-ratingbar>
+  <br />
+  Rating 2 :
+  <app-ratingbar formControlName="rating2"></app-ratingbar>
+</form>
+
+
+<button type="button" (click)="setAllTo4()">Set to all 4</button>
+
+<app-ratingbar (change)="someMethod($event)"></app-ratingbar>
+
+
+
+<pre>{{ formGroup.value | json }}</pre>
+<pre>Is dirty {{ formGroup.dirty }}</pre>
+<pre>Is touched {{ formGroup.touched }}</pre>

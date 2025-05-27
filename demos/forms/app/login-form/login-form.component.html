@@ -1,0 +1,20 @@
+<p>login-form works!</p>
+
+
+
+<form [formGroup]="f" (submit)="f.valid && submit()">
+    <input type="text" title="username" [formControlName]="'username'" />
+    <input type="password" title="password" [formControlName]="'password'" />
+</form>
+
+{{ f.valid }}
+
+{{ f.controls.username.errors ? (f.controls.username.errors | json) : '' }}
+
+@if(f.controls.username.errors && f.controls.username.errors['required']){
+<p>Pensez à remplir le champ username</p>
+}
+
+@if(f.controls.username.errors && f.controls.username.errors['minlength']){
+<p>Pensez à mettre au moins 5 caractères</p>
+}

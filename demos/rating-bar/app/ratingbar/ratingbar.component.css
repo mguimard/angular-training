@@ -1,0 +1,11 @@
+.container {
+    border: 1px solid orange;
+}
+
+span {
+    cursor: pointer;
+}
+
+span.checked {
+    color : orange;
+}

@@ -1,0 +1,19 @@
+<p>signup-form works!</p>
+
+<input type="text" [formControl]="username" required title="whatever" />
+
+@if(username.pending){
+<p>Checking username ..... please wait ....</p>
+}
+@else if(username.errors && username.errors['alreadyTaken']){
+<p>{{username.errors['alreadyTaken']}}</p>
+} @else if (username.errors && username.errors['required']) {
+<p>Veuillez entrer un username</p>
+} @else {
+<p>Ce username est disponible</p>
+}
+
+
+@if(username.errors && username.errors['someOtherErrorKey']){
+<p>someOtherErrorKey: {{username.errors['someOtherErrorKey']}}</p>
+}
