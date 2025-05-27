@@ -1,0 +1,14 @@
+<h1>RX</h1>
+
+<div>{{ data.count$ | async }}</div>
+<div>{{ data.users$ | async | json }} </div>
+<div>{{ data.countv2.asObservable() | async | json }} </div>
+<div>{{ data.pizzas() | json }} </div>
+
+<button type="button" (click)="toggleChild()">toggle child</button>
+
+@if(toggle){
+<app-child></app-child>
+}
+
+<router-outlet />

@@ -1,0 +1,14 @@
+<div class="container">
+  <p>
+    user-list
+  </p>
+
+  <app-user-list-count></app-user-list-count>
+
+  <p><button (click)="addUser()">Add user</button></p>
+  
+  <div *ngFor="let user of users$ | async">
+        <app-user-display [user]="user"></app-user-display>
+        <button (click)="updateUser(user)">Update user</button>
+  </div>
+</div>
