@@ -1,0 +1,10 @@
+<p>gradient-chooser works!</p>
+
+<input type="text" [value]="gradient.name" title="name" #localName
+    (change)="gradient.name = localName.value; update()" />
+<input type="color" [value]="gradient.startColor" title="startColor" #localStartColor
+    (change)="gradient.startColor = localStartColor.value; update()" />
+<input type="color" [value]="gradient.endColor" title="endColor" #localEndColor
+    (change)="gradient.endColor = localEndColor.value; update()" />
+
+<app-gradient-preview [gradient]="gradient"></app-gradient-preview>

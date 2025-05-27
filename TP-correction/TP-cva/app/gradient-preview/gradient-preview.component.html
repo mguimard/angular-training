@@ -1,0 +1,13 @@
+<p>gradient-preview works!</p>
+
+@if(gradient){
+<div [style]="{
+    background: 'linear-gradient(90deg, '+gradient.startColor+' 0%, '+gradient.endColor+' 100%)',
+    width: '200px',
+    height: '32px'
+}"></div>
+
+<pre>
+    {{ gradient | json }}
+</pre>
+}

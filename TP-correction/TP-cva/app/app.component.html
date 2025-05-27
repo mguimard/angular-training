@@ -1,0 +1,12 @@
+<form [formGroup]="f" style="border: 1px solid orange">
+
+    <app-gradient-chooser formControlName="gradient1"></app-gradient-chooser>
+
+</form>
+
+<pre>
+    {{ f.value | json }}
+</pre>
+
+
+<app-gradient-preview [gradient]="f.controls.gradient1.value"></app-gradient-preview>
