@@ -1,0 +1,6 @@
+<p>users ({{ chatService.users().length }})</p>
+<div>
+    @for(user of chatService.users(); track user){
+    <app-user [user]="user"></app-user>
+    }
+</div>

@@ -1,0 +1,6 @@
+<p>messages:</p>
+<div>
+    @for(message of chatService.messages(); track message){
+    <app-message [message]="message"></app-message>
+    }
+</div>

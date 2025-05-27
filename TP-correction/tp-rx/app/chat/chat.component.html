@@ -1,0 +1,6 @@
+<p>chat works!</p>
+<app-messages></app-messages>
+<input type="text" #localMessage title="New message" placeholder="New message" />
+<button (click)="chatService.addMessages(localMessage.value); localMessage.value='' " type="button">Send</button>
+
+<app-users></app-users>
