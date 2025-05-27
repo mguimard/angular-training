@@ -37,6 +37,7 @@ Interface représentant un gradient entre deux couleurs.
 
 ```ts
 interface Gradient {
+    name: string;
     startColor: string;
     endColor: string;
 }
