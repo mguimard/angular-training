@@ -53,12 +53,14 @@ export const routes: Routes = [
         resolve: {
             user: async (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
                 console.log('User resolver', route.params['userId'])
+                // must be ran before awaiting a promise or 
+                // in https://angular.dev/api/core/runInInjectionContext
+                const router = inject(Router);
 
                 let res = await fetch('https://jsonplaceholder.typicode.com/users/' + route.params['userId'])
 
-
                 if (res.status !== 200)
-                    return new RedirectCommand(inject(Router).parseUrl('/404'))
+                    return new RedirectCommand(router.parseUrl('/404'))
 
                 let data = await res.json()
 
