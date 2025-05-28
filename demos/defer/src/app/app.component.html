@@ -1,0 +1,19 @@
+<h1 i18n="@@appTitle">Hello super app</h1>
+<h1 i18n="@@appTitle">-</h1>
+
+<a href="/en" i18n-title="@@englishLang" title="English">EN</a> - <a href="/fr">FR</a> - <a href="/es">ES</a>
+
+<p i18n="@@lovePizzas">I love pizzas</p>
+<button i18n="@@submit" type="button">Submit</button>
+
+<p>{{ stringToTranslate }}</p>
+
+<app-pizza></app-pizza>
+
+@defer{
+<app-pizza></app-pizza>
+} @loading{
+<p i18n="@@pleaseWait">Please wait...</p>
+}
+
+<router-outlet />

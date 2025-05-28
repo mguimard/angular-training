@@ -1,0 +1,11 @@
+{
+  "locale": "en",
+  "translations": {
+    "appTitle": "Hello defer !!!",
+    "englishLang": "English",
+    "lovePizzas": "I love pizzas",
+    "pleaseWait": "Please wait...",
+    "myStyring": "I should be translated",
+    "submit": "Submit"
+  }
+}
