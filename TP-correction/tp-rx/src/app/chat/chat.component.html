@@ -1,0 +1,8 @@
+<p>chat works!</p>
+<app-messages></app-messages>
+<input data-testid="message-input" type="text" #localMessage title="New message" placeholder="New message"
+    i18n-title="@@newMessageTitle" i18n-placeholder="@@newMessagePlaceholder" />
+<button data-testid="send-message" (click)="chatService.addMessages(localMessage.value); localMessage.value='' "
+    type="button" i18n="@@sendMessage">Send</button>
+
+<app-users></app-users>

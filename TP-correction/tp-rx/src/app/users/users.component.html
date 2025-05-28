@@ -1,0 +1,6 @@
+<p><span i18n="@@users">users</span> ({{ chatService.users().length }})</p>
+<div data-testid="user-list">
+    @for(user of chatService.users(); track user){
+    <app-user [user]="user"></app-user>
+    }
+</div>

@@ -1,0 +1,12 @@
+{
+  "locale": "en",
+  "translations": {
+    "appTitle": "TP rx",
+    "addUser": "Add user",
+    "newMessageTitle": "New message",
+    "newMessagePlaceholder": "New message",
+    "sendMessage": "Send",
+    "messages": "messages",
+    "users": "users"
+  }
+}
