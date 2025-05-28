@@ -2,7 +2,7 @@
 
 Le but de ce TP est de mettre en place les tests end to end avec Cypress et les exécuter.
 
-Les tests seront à réaliser sur l'application réalisée dans le TP behavior-subject
+Les tests seront à réaliser sur l'application réalisée dans le TP rx
 
 Référence de la ligne de commande cypress https://docs.cypress.io/app/references/command-line
 
